@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState} from 'react'
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {
 
@@ -78,7 +78,6 @@ const ForgotPassword = () => {
           </form>
         </div>
       </div>
-      <ToastContainer/>
     </div>
   )
 }

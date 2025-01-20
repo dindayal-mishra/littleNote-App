@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const Register = () => {
     const {data} = await axios.post("http://localhost:3070/register",user)
     console.log(data);
     if(data.message=="user registerd successfully"){
-      toast.success("user registerd successfully")
+      toast.success("User Registerd Successfully")
     }
     setUser( {username: "",email:"",password: "",})
     navigate("/login")
@@ -32,11 +32,10 @@ const Register = () => {
   };
   return (
     <div className="flex justify-center items-center  h-[80vh] w-screen">
-       <ToastContainer />
       <div className="flex justify-center items-center h-[60vh] w-[60%] shadow-2xl">
         <div className=" h-[100%] w-[40%]  flex justify-center items-center">
           <div className="text-green-600 text-3xl h-60 w-80 flex justify-center items-center">
-            Oops.. <br />You are not <br />Registered Yet
+            Oops.. <br />You are not <br />Sign up Yet
           </div>
         </div>
 
@@ -78,7 +77,6 @@ const Register = () => {
           </form>
         </div>
       </div>
-      <ToastContainer/>
     </div>
   );
 };

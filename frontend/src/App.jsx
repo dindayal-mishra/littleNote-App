@@ -9,12 +9,14 @@ import DashBoardNotePage from "./components/dashboard/DashBoardNotePage"
 import CreateNotePage from "./components/dashboard/CreateNotePage"
 import UpdateNotes from "./components/dashboard/UpdateNotes"
 import PrivateRoute from "./components/privateRoute/PrivateRoute"
+import ErrorPage from "./components/errorPage/ErrorPage"
 
 const App=()=> {
    
   const route=createBrowserRouter([
     {
       path:"/",
+      errorElement:<ErrorPage/>,
       element:<Root/>,
       children:[
         {

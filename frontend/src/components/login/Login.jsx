@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
   const handleFormSubmit= async (e)=>{
       e.preventDefault()
       const {data} = await axios.post("http://localhost:3070/login",user)
-      console.log(data);
+      // console.log(data);
       const {message,token,userName}=data
       // console.log(message,token,userName);
       // console.log(userExist.userName);
@@ -28,12 +28,12 @@ const Login = () => {
       if(token){
         localStorage.setItem("access-token",token)
         localStorage.setItem("shortName",shortName)
-        toast.success(message);
+        toast.success("Login Successfully");
         navigate("/dashboardNotePage")
       }
       else{
-        console.log("you have not registered yet and you dont have any token");
-        toast.error('login failed');
+        // console.log("you have not registered yet and you dont have any token");
+        toast.error('login failed you are not recognize plese sign in first');
       }
   }
 
@@ -43,6 +43,8 @@ const Login = () => {
     const {value,name}=e.target
     setUser({...user,[name]:value})
   }
+
+
   return (
     <div className="flex justify-center items-center  h-[80vh] w-screen   ">
       <div className="flex justify-center items-center h-[60vh] w-[60%] shadow-2xl ">
@@ -83,7 +85,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

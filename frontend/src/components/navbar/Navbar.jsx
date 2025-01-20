@@ -1,24 +1,28 @@
 import React from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
 
   const naviagte=useNavigate()
 
-  const handleLogout=()=>{
-    console.log("deleted token successfully");
-    
-    localStorage.clear()
-    naviagte("/login")
-  }
-
   const currentUser=localStorage.getItem("access-token")
   const shortName=localStorage.getItem("shortName")
-  console.log(shortName);
+  // console.log(shortName);
 
   const FirstCharecterOfUser=shortName?.split(" ").map(word => word.charAt(0).toUpperCase()).join('');
-  console.log(FirstCharecterOfUser);
+  // console.log(FirstCharecterOfUser);
   
+  const handleLogout=()=>{
+    // console.log("deleted token successfully");
+    localStorage.clear()
+    const updatedCurrentUser = localStorage.getItem("access-token");
+    if (!updatedCurrentUser) {
+      // console.log("not a user");
+      toast.success("Logout Successfully")
+    }
+    naviagte("/login")
+  }
 
   return (
     <div>
